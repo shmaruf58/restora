@@ -67,6 +67,7 @@ const Header = () => {
             >
               Home
             </NavLink>
+
             <NavLink
               to="/blog"
               className={({ isActive }) => (isActive ? "active" : "default")}
@@ -74,15 +75,18 @@ const Header = () => {
               {" "}
               <span className="ms-3">Blog</span>
             </NavLink>
+
+
           </ul>
         </div>
         <div className="navbar-end">
+
           <Link to="/login">
-            <a className="btn btn-primary">Log In</a>
+            <a className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase">Log In</a>
           </Link>
 
           <Link to="/signup">
-            <a className="btn btn-primary ms-3">Sign Up</a>
+            <a className="btn btn-primary ms-3 w-6 md:w-auto lg:uppercase lowercase">Sign Up</a>
           </Link>
 
           {user && (
@@ -92,7 +96,7 @@ const Header = () => {
               <img className="w-12 h-12 me-2 rounded-full" src={user.photoURL? user.photoURL: "https://ionicframework.com/docs/img/demos/avatar.svg" }/></Tooltip>
 
               
-              <button className="btn btn-primary" onClick={handleLogOut}>
+              <button className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase" onClick={handleLogOut}>
                 Log Out
               </button>
             </span>
