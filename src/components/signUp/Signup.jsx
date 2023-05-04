@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./signUp.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./signUp.css";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -9,7 +9,9 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Signup = () => {
   const [error, setError] = useState("");
-  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { createUser } = useContext(AuthContext);
 
@@ -39,6 +41,7 @@ const Signup = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
