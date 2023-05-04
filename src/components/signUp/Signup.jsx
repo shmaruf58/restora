@@ -68,7 +68,7 @@ const Signup = () => {
         </div>
 
         {/* photo url */}
-        <input type="file" name="file" />
+        <input type="file" name="file"  required  />
 
         <input
           className="btn-submit btn-primary"
