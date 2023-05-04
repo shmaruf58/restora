@@ -19,35 +19,29 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/blog", element:  <Blog/>},
+      { path: "/blog", element: <Blog /> },
 
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
 
-      { path: "/services/:id", 
-        element: <PrivateRoute><CardDetails /></PrivateRoute> 
+      {
+        path: "/services/:id",
+        element: (
+          <PrivateRoute>
+            <CardDetails />
+          </PrivateRoute>
+        ),
       },
-
-      
     ],
-
   },
-
- 
-
-
-
-
-
-
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-  <AuthProvider>
-    <RouterProvider router={router} />
-  </AuthProvider>
+    <AuthProvider>
+
+      <RouterProvider router={router} />
+      
+    </AuthProvider>
   </React.StrictMode>
-    
-  
 );
