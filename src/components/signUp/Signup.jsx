@@ -4,9 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./signUp.css";
 import { AuthContext } from "../providers/AuthProvider";
 
-
-
-
 const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -14,8 +11,6 @@ const Signup = () => {
   const from = location.state?.from?.pathname || "/";
 
   const { createUser } = useContext(AuthContext);
-
- 
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -25,9 +20,8 @@ const Signup = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
     console.log(name);
-   
 
-    setError('')
+    setError("");
 
     if (password !== confirm) {
       setError("Password did not match!");
@@ -36,8 +30,8 @@ const Signup = () => {
       setError("Password must be 6 character!");
       return;
     }
-    
-    createUser( email, password)
+
+    createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -47,24 +41,17 @@ const Signup = () => {
         console.log(error);
         setError(error.message);
       });
-
   };
-
-
 
   return (
     <div className="form-container pb-10">
       <h2 className="form-title">Sign Up </h2>
 
-
-
       <form onSubmit={handleSignUp}>
-
-      <div className="form-control">
+        <div className="form-control">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name"/>
+          <input type="text" name="name" id="name" />
         </div>
-
 
         <div className="form-control">
           <label htmlFor="email">Email</label>
@@ -80,19 +67,21 @@ const Signup = () => {
           <input type="password" name="Confirm" id="confirm" required />
         </div>
 
-      
-          {/* photo url */}
-          <input type="file" name="file"/>
-          
-        
-          <input className="btn-submit btn-primary"   type="submit" value="Sign Up" />
+        {/* photo url */}
+        <input type="file" name="file" />
 
-
-
+        <input
+          className="btn-submit btn-primary"
+          type="submit"
+          value="Sign Up"
+        />
       </form>
       <p>
         <small>
-          Already have an account? <Link to="/login" className="text-blue-700 underline">Log In</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-700 underline">
+            Log In
+          </Link>
         </small>
       </p>
       <p className="text-error">{error}</p>
