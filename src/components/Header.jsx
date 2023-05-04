@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./providers/AuthProvider";
@@ -75,28 +74,38 @@ const Header = () => {
               {" "}
               <span className="ms-3">Blog</span>
             </NavLink>
-
-
           </ul>
         </div>
         <div className="navbar-end">
-
           <Link to="/login">
-            <a className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase">Log In</a>
+            <a className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase">
+              Log In
+            </a>
           </Link>
 
           <Link to="/signup">
-            <a className="btn btn-primary ms-3 w-6 md:w-auto lg:uppercase lowercase">Sign Up</a>
+            <a className="btn btn-primary ms-3 w-6 md:w-auto lg:uppercase lowercase">
+              Sign Up
+            </a>
           </Link>
 
           {user && (
             <span className="white flex justify-center items-center ps-2">
+              <Tooltip title={user.displayName ? user.displayName : user.email}>
+                <img
+                  className="w-12 h-12 me-2 rounded-full"
+                  src={
+                    user.photoURL
+                      ? user.photoURL
+                      : "https://ionicframework.com/docs/img/demos/avatar.svg"
+                  }
+                />
+              </Tooltip>
 
-                 <Tooltip title={user.displayName?user.displayName: user.email}>
-              <img className="w-12 h-12 me-2 rounded-full" src={user.photoURL? user.photoURL: "https://ionicframework.com/docs/img/demos/avatar.svg" }/></Tooltip>
-
-              
-              <button className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase" onClick={handleLogOut}>
+              <button
+                className="btn btn-primary w-6 md:w-auto lg:uppercase lowercase"
+                onClick={handleLogOut}
+              >
                 Log Out
               </button>
             </span>
